@@ -100,6 +100,7 @@ app.get("/get-data", async (req, res) => {
 
     await page.goto(url);
   } catch (error) {
+    console.log(error.message);
     return res.status(500).send("Internal server error");
   }
 });
