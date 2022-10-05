@@ -2,7 +2,7 @@
   "name": "airdna-scraping",
   "version": "1.0.0",
   "engines": {
-    "node": "13.3.0"
+    "node": "18.10.0"
   },
   "description": "Scrape data from AirDNA map",
   "main": "index.js",
