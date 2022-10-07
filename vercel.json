@@ -1,6 +1,6 @@
 {
   "routes": [
-    { "source": "/", "destination": "/" },
-    { "source": "/get-data", "destination": "/get-data" }
+    { "src": "/", "dest": "/" },
+    { "src": "/get-data", "dest": "/get-data" }
   ]
 }
