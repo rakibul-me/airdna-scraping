@@ -1,6 +1,6 @@
 {
-  "rewrites": [
-    { "source": "/get-data", "destination": "/get-data" },
-    { "source": "/", "destination": "/" }
+  "routes": [
+    { "source": "/", "destination": "/" },
+    { "source": "/get-data", "destination": "/get-data" }
   ]
 }
