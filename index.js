@@ -79,7 +79,11 @@ app.get("/get-data", async (req, res) => {
     return res.status(400).send("Wrong data");
   }
   try {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ["--use-gl=egl", "--no-sandbox", "--disable-setuid-sandbox"],
+      ignoreDefaultArgs: ["--disable-extensions"],
+    });
     const page = (await browser.pages())[0];
 
     page.on("response", async (response) => {
