@@ -78,9 +78,15 @@ app.get("/get-data", async (req, res) => {
   if (!url || !fileType) {
     return res.status(400).send("Wrong data");
   }
+  let browser;
+  let page;
   try {
-    const browser = await puppeteer.launch();
-    const page = (await browser.pages())[0];
+    browser = await puppeteer.launch({
+      headless: true,
+      args: ["--use-gl=egl", "--no-sandbox", "--disable-setuid-sandbox"],
+      ignoreDefaultArgs: ["--disable-extensions"],
+    });
+    page = (await browser.pages())[0];
     await page.goto(url);
 
     page.on("response", async (response) => {
