@@ -79,12 +79,9 @@ app.get("/get-data", async (req, res) => {
     return res.status(400).send("Wrong data");
   }
   try {
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ["--use-gl=egl", "--no-sandbox", "--disable-setuid-sandbox"],
-      ignoreDefaultArgs: ["--disable-extensions"],
-    });
+    const browser = await puppeteer.launch();
     const page = (await browser.pages())[0];
+    await page.goto(url);
 
     page.on("response", async (response) => {
       if (
@@ -101,9 +98,8 @@ app.get("/get-data", async (req, res) => {
         }
       }
     });
-
-    await page.goto(url);
   } catch (error) {
+    await browser.close();
     console.log(error.message);
     return res.status(500).send("Internal server error");
   }
