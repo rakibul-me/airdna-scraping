@@ -82,9 +82,7 @@ app.get("/get-data", async (req, res) => {
   let page;
   try {
     browser = await puppeteer.launch({
-      headless: true,
-      args: ["--use-gl=egl", "--no-sandbox", "--disable-setuid-sandbox"],
-      ignoreDefaultArgs: ["--disable-extensions"],
+      args: ["--no-sandbox"],
     });
     page = (await browser.pages())[0];
     await page.goto(url, { timeout: 100000 });
