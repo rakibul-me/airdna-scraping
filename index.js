@@ -105,7 +105,9 @@ app.get("/get-data", async (req, res) => {
       }
     });
   } catch (error) {
-    await browser.close();
+    if (browser) {
+      await browser.close();
+    }
     console.log(error.message);
     return res.status(500).send("Internal server error  " + error.message);
   }
